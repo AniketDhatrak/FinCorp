@@ -1,48 +1,32 @@
 <?php
-// Llama AI API Key
-$llamaApiKey = "LA-0e236d7c5f304744a26debc5ce9e1549906e378c5cd6433faf5870b90a1d508d";
-
-// Function to call Llama AI API using cURL
 function getChatbotResponse($message) {
-    global $llamaApiKey;
+    $url = "http://localhost:5000/generate";
+    $data = ["prompt" => $message];
 
-    $url = "https://api.llama.ai/v1/chat";
-    $data = [
-        "prompt" => $message,
-        "max_tokens" => 150,
+    $options = [
+        "http" => [
+            "header" => "Content-Type: application/json\r\n",
+            "method" => "POST",
+            "content" => json_encode($data),
+        ]
     ];
 
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        "Content-Type: application/json",
-        "Authorization: Bearer $llamaApiKey"
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    $context = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
 
-    $result = curl_exec($ch);
-    $error = curl_error($ch);
-    curl_close($ch);
-
-    if ($result === false) {
-        return "Error: " . $error;
+    if ($result === FALSE) {
+        return "Sorry, there was an error processing your request.";
     }
 
     $response = json_decode($result, true);
-    return $response["choices"][0]["text"] ?? "Sorry, I couldn't understand that.";
+    return $response["response"] ?? "Sorry, I couldn't understand that.";
 }
 
-// Check if the user submitted a query
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["user_query"])) {
-    $userMessage = $_POST["user_query"];
-    $botResponse = getChatbotResponse($userMessage);
-
-    // Return the bot response
-    echo json_encode(["response" => $botResponse]);
-    exit;
-}
+// Example usage
+$message = "What is financial literacy?";
+echo getChatbotResponse($message);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
