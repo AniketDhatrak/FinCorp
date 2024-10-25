@@ -1,0 +1,36 @@
+{
+    "government": [
+        {
+            "name": "Pradhan Mantri Awas Yojana",
+            "description": "A government scheme to provide affordable housing loans to eligible beneficiaries.",
+            "link": "https://pmay.gov.in/"
+        },
+        {
+            "name": "Mudra Loan",
+            "description": "Micro-finance scheme to provide loans to small businesses.",
+            "link": "https://mudra.org.in/"
+        },
+        {
+            "name": "Stand-Up India",
+            "description": "Support for women entrepreneurs and SC/ST communities to start new businesses.",
+            "link": "https://www.standupmitra.in/"
+        }
+    ],
+    "private": [
+        {
+            "name": "HDFC Personal Loan",
+            "description": "Personal loans with easy eligibility and quick disbursement.",
+            "link": "https://www.hdfcbank.com/"
+        },
+        {
+            "name": "ICICI Micro Loan",
+            "description": "Small business loans for micro-entrepreneurs.",
+            "link": "https://www.icicibank.com/"
+        },
+        {
+            "name": "Axis Bank Business Loan",
+            "description": "Business loans for startups and SMEs.",
+            "link": "https://www.axisbank.com/"
+        }
+    ]
+}
