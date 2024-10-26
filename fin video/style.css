@@ -1,0 +1,11 @@
+.video-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+}
+
+.modal-body iframe {
+    border: none;
+}
