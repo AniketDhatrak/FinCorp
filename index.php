@@ -27,43 +27,85 @@ $news = fetchNews($symbols, $searchQuery);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <meta name="Home">
     <meta name="author" content="Inovatik">
 
     <title>FinCorp</title>
-    
+
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="css/bootstrap.css" rel="stylesheet">
     <!-- <link href="css/fontawesome-all.css" rel="stylesheet"> -->
     <link href="css/swiper.css" rel="stylesheet">
-	<link href="css/magnific-popup.css" rel="stylesheet">
-	<link href="css/styles.css" rel="stylesheet">
-	
-	<!-- Favicon  -->
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
+    <!-- CSS for improved styling -->
+    <style>
+        .news-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content {
+            padding: 15px;
+        }
+
+        .news-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .news-description {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
 </head>
+
 <body data-spy="scroll" data-target=".fixed-top">
-    
+
     <!-- Preloader -->
-	<div class="spinner-wrapper">
+    <div class="spinner-wrapper">
         <div class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
     </div>
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            
-            <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a> 
-            
+
+            <a class="navbar-brand logo-image" href="index.html"><img src="images/logo.svg" alt="alternative"></a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-awesome fas fa-bars"></span>
                 <span class="navbar-toggler-awesome fas fa-times"></span>
@@ -96,7 +138,7 @@ $news = fetchNews($symbols, $searchQuery);
                 </span>
             </div>
         </div>
-    </nav> 
+    </nav>
 
 
     <!-- Header -->
@@ -108,34 +150,34 @@ $news = fetchNews($symbols, $searchQuery);
                         <h1>"Your guide to smarter financial decisions is here!"</h1>
                         <p class="p-large p-heading">Fincorp is a financial literacy website aimed at promoting economic development by offering information on various financial schemes, investment options, loans and microloans, making complex financial concepts accessible to public.</p>
                         <a class="btn-solid-lg" href="#your-link"><i class="fab fa-apple"></i>FinBot</a>
-                    </div> 
-                </div> 
+                    </div>
+                </div>
             </div>
-            
+
         </div>
         <div class="deco-white-circle-1">
             <img src="images/decorative-white-circle.svg" alt="alternative">
         </div>
         <div class="deco-white-circle-2">
             <img src="images/decorative-white-circle.svg" alt="alternative">
-        </div> 
+        </div>
         <div class="deco-blue-circle">
             <img src="images/decorative-blue-circle.svg" alt="alternative">
-        </div> 
+        </div>
         <div class="deco-yellow-circle">
             <img src="images/decorative-yellow-circle.svg" alt="alternative">
-        </div> 
+        </div>
         <div class="deco-green-diamond">
             <img src="images/decorative-green-diamond.svg" alt="alternative">
-        </div> 
-    </header> 
+        </div>
+    </header>
 
 
     <div class="cards-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    
+
                     <div class="card">
                         <div class="card-image">
                             <i class="fa-solid fa-toilet-paper" style="color: #63E6BE; font-size: 3.25rem;
@@ -145,7 +187,7 @@ line-height: 7.5rem;"></i>
                             <h5 class="card-title">Financial Schemes</h5>
                         </div>
                     </div>
-                    
+
                     <!-- <div class="card">
                         <div class="card-image green">
                             <i class="fas fa-code"></i>
@@ -154,7 +196,7 @@ line-height: 7.5rem;"></i>
                             <h5 class="card-title">Financial Analysis</h5>
                         </div>
                     </div> -->
-                   
+
                     <div class="card">
                         <div class="card-image red">
                             <i class="fa-solid fa-newspaper" style="color: #B197FC; font-size: 3.25rem;
@@ -164,7 +206,7 @@ line-height: 7.5rem;"></i>
                             <h5 class="card-title">Financial News</h5>
                         </div>
                     </div>
-                   
+
                     <div class="card">
                         <div class="card-image yellow">
                             <i class="fas fa-comments"></i>
@@ -173,7 +215,7 @@ line-height: 7.5rem;"></i>
                             <h5 class="card-title">Finance Bot</h5>
                         </div>
                     </div>
-                
+
                     <div class="card">
                         <div class="card-image blue">
                             <i class="fa-solid fa-coins" style="color: #74C0FC ; font-size: 3.25rem;
@@ -183,13 +225,13 @@ line-height: 7.5rem;"></i>
                             <h5 class="card-title">Finance Tracker</h5>
                         </div>
                     </div>
-       
 
-                </div> 
-            </div> 
-        </div> 
-    </div> 
-  
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- <div id="description" class="basic-1">
         <div class="container">
             <div class="row">
@@ -222,9 +264,9 @@ line-height: 7.5rem;"></i>
             </div>
         </div>
     </div> -->
-    
-	<!-- Details Lightbox -->
-	<!-- <div id="description-1-details-lightbox" class="lightbox-basic zoom-anim-dialog mfp-hide">
+
+    <!-- Details Lightbox -->
+    <!-- <div id="description-1-details-lightbox" class="lightbox-basic zoom-anim-dialog mfp-hide">
         <div class="row">
             <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
 			<div class="col-lg-8">
@@ -282,7 +324,7 @@ line-height: 7.5rem;"></i>
                         
                         <div class="tab-content" id="cedoTabsContent">
                              Tab -->
-                            <!-- <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
+    <!-- <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab-1">
                                 <p><strong>Schedule tasks</strong> to keep track of their completion. Sync provides multiple scheduling options including alarms and reminders.</p>
                                 <ul class="list-unstyled li-space-lg">
                                     <li class="media">
@@ -341,11 +383,11 @@ line-height: 7.5rem;"></i>
                 </div>
             </div>
         </div>
-    </div> --> 
+    </div> -->
 
 
     <!-- Financial schemes -->
-    <div id="features" class="basic-2"> 
+    <div id="features" class="basic-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -427,95 +469,46 @@ line-height: 7.5rem;"></i>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 
     <!-- financial news -->
-    <div id="screens" class="slider">
+    <!-- Slider HTML -->
+    <div id="newsSlider" class="slider">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    
+                    <!-- Header for Latest News -->
+                <h2 class="text-center mb-4">Latest News</h2>
+                
                     <div class="slider-container">
-                        <div class="swiper-container image-slider">
+                        <div class="swiper-container news-slider">
                             <div class="swiper-wrapper">
-                                
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-1.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-1.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-2.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-2.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-3.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-3.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-4.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-4.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-5.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-5.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-1.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-6.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-2.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-7.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <!-- Slide -->
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-3.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-8.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-4.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-9.jpg" alt="alternative">
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="images/screenshot-5.jpg" class="popup-link" data-effect="fadeIn">
-                                        <img class="img-fluid" src="images/screenshot-10.jpg" alt="alternative">
-                                    </a>
-                                </div>
-                                
-                            </div> 
+                                <?php if (!empty($news['data'])): ?>
+                                    <?php foreach ($news['data'] as $index => $article): ?>
+                                        <?php if ($index >= 10) break; // Limit to 10+ news items 
+                                        ?>
+                                        <div class="swiper-slide news-slide">
+                                            <a href="<?php echo $article['url']; ?>" target="_blank" class="news-link" data-effect="fadeIn">
+                                                <div class="news-image" style="background-image: url('<?php echo htmlspecialchars($article['image_url']); ?>');"></div>
+                                                <div class="news-content">
+                                                    <h4 class="news-title"><?php echo htmlspecialchars($article['title']); ?></h4>
+                                                    <p class="news-description"><?php echo htmlspecialchars($article['description']); ?></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <div class="swiper-slide">
+                                        <p>No news articles available.</p>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
-                            
-                        </div> 
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -533,8 +526,8 @@ line-height: 7.5rem;"></i>
             <div class="row">
                 <div class="col-lg-12"> -->
 
-                    <!-- Card -->
-                    <!-- <div class="card">
+    <!-- Card -->
+    <!-- <div class="card">
                         <div class="card-image">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <hr class="testimonial-line">
@@ -544,8 +537,8 @@ line-height: 7.5rem;"></i>
                             <div class="testimonial-author">Rick Jones - Designer</div>
                         </div>
                     </div> -->
-                    <!-- Card -->
-                    <!-- <div class="card">
+    <!-- Card -->
+    <!-- <div class="card">
                         <div class="card-image">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <hr class="testimonial-line">
@@ -556,8 +549,8 @@ line-height: 7.5rem;"></i>
                         </div>
                     </div> -->
 
-                    <!-- Card -->
-                    <!-- <div class="card">
+    <!-- Card -->
+    <!-- <div class="card">
                         <div class="card-image">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <hr class="testimonial-line">
@@ -567,8 +560,8 @@ line-height: 7.5rem;"></i>
                             <div class="testimonial-author">Jay Frisco - Marketer</div>
                         </div>
                     </div> -->
-                    <!-- end of card -->
-<!-- 
+    <!-- end of card -->
+    <!-- 
                 </div>
             </div> 
             <div class="row">
@@ -585,8 +578,8 @@ line-height: 7.5rem;"></i>
             <div class="row">
                 <div class="col-lg-12"> -->
 
-                    <!-- Card -->
-                    <!-- <div class="card">
+    <!-- Card -->
+    <!-- <div class="card">
                         <div class="card-image">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <hr class="testimonial-line">
@@ -771,21 +764,48 @@ line-height: 7.5rem;"></i>
                 <div class="col-lg-12">
                     <p class="p-small">Copyright © 2020 <a href="#">FinCorp</a> - All rights reserved</p>
                 </div>
-            </div> 
-        </div> 
+            </div>
+        </div>
     </div>
-    
-    	
+
+
     <!-- Scripts -->
     <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
     <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
     <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
     <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <!-- <script src="js/swiper.min.js"></script> -->
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
-    
+
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+    <!-- Include Swiper JS and initialize continuous scrolling -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+    const swiper = new Swiper('.news-slider', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
     <script src="https://kit.fontawesome.com/ae3714a579.js" crossorigin="anonymous"></script>
 </body>
-</html>
+
+</html> 
