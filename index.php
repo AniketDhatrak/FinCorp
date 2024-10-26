@@ -1,3 +1,30 @@
+<?php
+$apiKey = 'h1ibcATLENE513P8ZcpQHeoVlR00I0AL7dDBMdW1'; // Replace with your actual MarketAux API key
+$news = [];
+$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+$symbols = 'TSLA,AMZN,MSFT'; // Replace with desired symbols
+
+// Fetch news from MarketAux API
+function fetchNews($symbols = '', $search = '')
+{
+    global $apiKey;
+    $url = 'https://api.marketaux.com/v1/news/all?symbols=' . $symbols . '&filter_entities=true&language=en&api_token=' . $apiKey;
+
+    if ($search) {
+        $url .= '&search=' . urlencode($search);
+    }
+
+    $response = file_get_contents($url);
+    return json_decode($response, true);
+}
+
+// Get the news data
+$news = fetchNews($symbols, $searchQuery);
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +92,7 @@
                     </li>
                 </ul>
                 <span class="nav-item">
-                    <a class="btn-outline-sm page-scroll" href="#">FinBot</a>
+                    <a class="btn-outline-sm page-scroll" href="#download">FinBot</a>
                 </span>
             </div>
         </div>
