@@ -132,7 +132,7 @@ $apiResult = fetchLatestNews();
     <div class="container mt-3">
         <div class="news-ticker-container">
             <div class="news-ticker-header">
-                <h6><i class="far fa-newspaper"></i> Latest News</h6>
+                <h6><i class="far fa-newspaper"></i>Latest News</h6>
             </div>
             <div class="news-list-container">
                 <ul class="news-list">
