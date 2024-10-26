@@ -1,5 +1,5 @@
 <?php
-$apiKey = 'h1ibcATLENE513P8ZcpQHeoVlR00I0AL7dDBMdW1'; // Replace with your actual MarketAux API key
+$apiKey = 'PU6N4O3ptrL517RrRWGEEEwVjtrmSZ9T8elyhdyZ'; // Replace with your actual MarketAux API key
 $news = [];
 $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
 $symbols = 'TSLA,AMZN,MSFT'; // Replace with desired symbols
@@ -13,6 +13,9 @@ function fetchNews($symbols = '', $search = '')
     if ($search) {
         $url .= '&search=' . urlencode($search);
     }
+
+    // Append a random query parameter to prevent caching
+    $url .= '&_=' . rand(1, 1000000);
 
     $response = file_get_contents($url);
     return json_decode($response, true);
@@ -42,15 +45,15 @@ $news = fetchNews($symbols, $searchQuery);
 
         .card {
             border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
             width: 300px;
-            /* Set width for cards */
             display: inline-block;
-            /* Ensure cards are in-line */
             vertical-align: top;
-            /* Align cards at the top */
-            margin-right: 10px;
-            /* Space between cards */
+            margin: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -86,83 +89,42 @@ $news = fetchNews($symbols, $searchQuery);
             overflow-x: auto;
             white-space: nowrap;
             padding: 10px 0;
-            /* Add some vertical padding */
         }
 
         .card-title {
             font-size: 1.1rem;
-            height: 40px;
-            /* Fixed height for title to avoid overflow */
+            height: auto;
             overflow: hidden;
-            /* Hide overflow */
             text-overflow: ellipsis;
-            /* Add ellipsis for long titles */
-            white-space: nowrap;
-            /* Prevent title from wrapping */
+            margin-bottom: 0.5rem;
         }
 
         .card-text {
             font-size: 0.9rem;
-            height: 60px;
-            /* Fixed height for description */
+            max-height: 60px;
             overflow: hidden;
-            /* Hide overflow */
             text-overflow: ellipsis;
-            /* Add ellipsis for long descriptions */
             display: -webkit-box;
-            /* Use box model */
             -webkit-line-clamp: 3;
-            /* Limit to 3 lines */
             -webkit-box-orient: vertical;
-            /* Vertical orientation */
+            margin-bottom: 0.5rem;
         }
 
-        .card {
-            border-radius: 8px;
-            transition: transform 0.2s;
-            width: 300px;
-            /* Set width for cards */
-            display: inline-block;
-            /* Ensure cards are in-line */
-            vertical-align: top;
-            /* Align cards at the top */
-            margin-right: 10px;
-            /* Space between cards */
+        .card-body {
+            padding: 1rem;
         }
 
-        .scrollable {
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 10px 0;
-            /* Add some vertical padding */
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .card-title {
-            font-size: 1.1rem;
-            height: 40px;
-            /* Fixed height for title to avoid overflow */
-            overflow: hidden;
-            /* Hide overflow */
-            text-overflow: ellipsis;
-            /* Add ellipsis for long titles */
-            white-space: nowrap;
-            /* Prevent title from wrapping */
-        }
-
-        .card-text {
-            font-size: 0.9rem;
-            height: 60px;
-            /* Fixed height for description */
-            overflow: hidden;
-            /* Hide overflow */
-            text-overflow: ellipsis;
-            /* Add ellipsis for long descriptions */
-            display: -webkit-box;
-            /* Use box model */
-            -webkit-line-clamp: 3;
-            /* Limit to 3 lines */
-            -webkit-box-orient: vertical;
-            /* Vertical orientation */
+        small {
+            display: block;
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -178,23 +140,21 @@ $news = fetchNews($symbols, $searchQuery);
         </form>
 
         <div class="row">
-            
-
             <div class="col-md-9">
                 <h4 class="text-secondary">Latest News</h4>
                 <div class="scrollable">
                     <?php if (isset($news['data']) && count($news['data']) > 0): ?>
                         <?php foreach ($news['data'] as $article): ?>
                             <div class="card shadow-sm">
-                                <img src="<?= htmlspecialchars($article['image_url']) ?>" class="card-img-top" alt="News Image" style="height: 180px; object-fit: cover;">
+                                <img src="<?= htmlspecialchars($article['image_url']) ?>" class="card-img-top" alt="News Image">
                                 <div class="card-body">
                                     <h5 class="card-title"><?= htmlspecialchars($article['title']) ?></h5>
                                     <p class="card-text"><?= htmlspecialchars($article['description']) ?></p>
                                     <small class="text-muted">Published at: <?= date('Y-m-d H:i', strtotime($article['published_at'])) ?></small>
                                     <br>
                                     <a href="<?= htmlspecialchars($article['url']) ?>" target="_blank" class="btn btn-primary btn-sm mt-2">Read more</a>
-`                                </div>
-`                            </div>
+                                </div>
+                            </div>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="alert alert-warning" role="alert">No news available.</div>
@@ -213,22 +173,23 @@ $news = fetchNews($symbols, $searchQuery);
                     'global' => 'Global Markets'
                 ];
                 foreach ($topics as $key => $topic): ?>
-                    <h5><?= htmlspecialchars($topic) ?></h5>
+                    <h4 class="text-secondary"><?= htmlspecialchars($topic) ?></h4>
                     <div class="scrollable">
-                        <?php $topicNews = fetchNews('', $key); // Fetch news for each topic 
-                        ?>
+                        <?php $topicNews = fetchNews('', $key); // Fetch news for each topic ?>
                         <?php if (isset($topicNews['data']) && count($topicNews['data']) > 0): ?>
-                            <?php foreach ($topicNews['data'] as $article): ?>
-                                <div class="card shadow-sm">
-                                    <img src="<?= htmlspecialchars($article['image_url']) ?>" class="card-img-top" alt="News Image" style="height: 180px; object-fit: cover;">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= htmlspecialchars($article['title']) ?></h5>
-                                        <p class="card-text"><?= htmlspecialchars($article['description']) ?></p>
-                                        <small class="text-muted">Published at: <?= date('Y-m-d H:i', strtotime($article['published_at'])) ?></small>
-                                        <br>
-                                        <a href="<?= htmlspecialchars($article['url']) ?>" target="_blank" class="btn btn-primary btn-sm mt-2">Read more</a>
+                            <?php foreach ($topicNews['data'] as $index => $article): ?>
+                                <?php if ($index < 4): // Show only the first 4 news items ?>
+                                    <div class="card shadow-sm">
+                                        <img src="<?= htmlspecialchars($article['image_url']) ?>" class="card-img-top" alt="News Image">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= htmlspecialchars($article['title']) ?></h5>
+                                            <p class="card-text"><?= htmlspecialchars($article['description']) ?></p>
+                                            <small class="text-muted">Published at: <?= date('Y-m-d H:i', strtotime($article['published_at'])) ?></small>
+                                            <br>
+                                            <a href="<?= htmlspecialchars($article['url']) ?>" target="_blank" class="btn btn-primary btn-sm mt-2">Read more</a>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <div class="alert alert-warning" role="alert">No news available for this topic.</div>
